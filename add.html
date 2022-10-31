@@ -35,34 +35,73 @@
 <!--------------------------------->    
 </head>
     <body>
+<!------------------------------------------------------------------------------------------------>
+<!------- Barra de Navegación ------>
+<!------------------------------------------------------------------------------------------------>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-            <a class="navbar-brand font-weight-bold" href=" index.html">
-                <img class="mr-2" src="assets/static/img/favicon.png" />
-                 ContactsApp
-            </a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="add.html">Añadir Contacto</a>
-                </li>
-                </ul>
-            </div>
+                <a class="navbar-brand font-weight-bold" href=" index.html"><img class="mr-2" src="assets/static/img/favicon.png" />ContactsApp</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" ><span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add.html">Añadir Contacto</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
+<!------------------------------------------------------------------------------------------------>
+<!------- Barra de Navegación ------>
+<!------------------------------------------------------------------------------------------------>
+
+<!------------------------------------------------------------------------------------------------>
+<!------- MAIN ------>
+<!------------------------------------------------------------------------------------------------>
+        <main>
+            <div class="container pt-5">
+                <div class="row justify-content-center">
+                    <!----------------------------------------------------------------------->
+                    <!------- Tarjeta de Añadir Contactos  ------>
+                    <!----------------------------------------------------------------------->
+                    <div class="col-md-8">
+                        <div class="card">
+                            <p class="card-header">Añadir nuevo contacto</p>
+                            <div class="card-body">
+                                <form>
+                                    <div class="mb-3 row">
+                                        <label for="name" class="col-md-4 col-form-label text-md-end">Nombre</label>
+                                        <div class="col-md-6">
+                                            <input id="name" type="text" class="form-control" name="name" required autocomplete="name" autofocus>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="phone_number" class="col-md-4 col-form-label text-md-end">Numero de Teléfono</label>
+                                        <div class="col-md-6">
+                                            <input id="phone_number" type="tel" class="form-control" name="phone_number" required autocomplete="phone_number" autofocus>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <div class="col-md-6 offset-md-4">
+                                            <button type="submit" class="btn btn-primary">Guardar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!----------------------------------------------------------------------->
+                    <!------- Tarjeta de Añadir Contactos ------>
+                    <!----------------------------------------------------------------------->
+                </div>
+            </div>
+        </main>
+<!------------------------------------------------------------------------------------------------>
+<!------- MAIN ------>
+<!------------------------------------------------------------------------------------------------>
     </body>
 </html>
