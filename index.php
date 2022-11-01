@@ -1,3 +1,17 @@
+<!--------------------------------------------------------->
+<!---- Lista de Contactos PHP (Definimos el contenido) ---->
+<!--------------------------------------------------------->
+<?php
+$contactos = [
+    ["nombre" => "Alejandro", "numero_telefono" => "789123001"],
+    ["nombre" => "José María", "numero_telefono" => "630912340"],
+    ["nombre" => "Antonio", "numero_telefono" => "629012739"],
+];
+?>
+<!--------------------------------------------------------->
+<!---- Lista de Contactos PHP (Definimos el contenido) ---->
+<!--------------------------------------------------------->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!--------------------------------->
-<!------------ Bootstrap ---------->
+<!------------ Lista de Contactos PHP ---------->
 <!--------------------------------->
     <link
         rel="stylesheet"
@@ -68,38 +82,18 @@
                     <!----------------------------------------------------------------------->
                     <!------- Tarjetas de Contactos ------>
                     <!----------------------------------------------------------------------->
-                    <div class="col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h3 class="card-title text-capitalize">Contacto 1</h3>
-                                <p class="m-2">789123001</p>
-                                <a href="#" class="btn btn-secondary mb-2">Editar Contacto</a>
-                                <a href="#" class="btn btn-danger mb-2">Eliminar Contacto</a>
+                    <?php foreach ($contactos as $contacto) : ?>
+                        <div class="col-md-4 mb-3">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <h3 class="card-title text-capitalize"><?= $contacto["nombre"]?></h3>
+                                    <p class="m-2"><?= $contacto["numero_telefono"]?></p>
+                                    <a href="#" class="btn btn-secondary mb-2">Editar Contacto</a>
+                                    <a href="#" class="btn btn-danger mb-2">Eliminar Contacto</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h3 class="card-title text-capitalize">Contacto 2</h3>
-                                <p class="m-2">630912340</p>
-                                <a href="#" class="btn btn-secondary mb-2">Editar Contacto</a>
-                                <a href="#" class="btn btn-danger mb-2">Eliminar Contacto</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-                                <h3 class="card-title text-capitalize">Contacto 3</h3>
-                                <p class="m-2">629012739</p>
-                                <a href="#" class="btn btn-secondary mb-2">Editar Contacto</a>
-                                <a href="#" class="btn btn-danger mb-2">Eliminar Contacto</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach ?>
                     <!----------------------------------------------------------------------->
                     <!------- Tarjetas de Contactos ------>
                     <!----------------------------------------------------------------------->
