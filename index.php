@@ -1,16 +1,18 @@
-<!--------------------------------------------------------->
-<!---- Lista de Contactos PHP (Definimos el contenido) ---->
-<!--------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------------------>
+<!---- Llamamos a "db.php" para conectarnos a la Base de Datos ---->
+<!---- Realizamos una consulta SQL para imprimir los contactos guardándolos en la variable "contactos" ---->
+<!------------------------------------------------------------------------------------------------------------------------>
+
 <?php
-$contactos = [
-    ["nombre" => "Alejandro", "numero_telefono" => "789123001"],
-    ["nombre" => "José María", "numero_telefono" => "630912340"],
-    ["nombre" => "Antonio", "numero_telefono" => "629012739"],
-];
+
+    require "db.php";
+
+    $contactos = $con->query("SELECT * FROM contactos");
+
 ?>
-<!--------------------------------------------------------->
-<!---- Lista de Contactos PHP (Definimos el contenido) ---->
-<!--------------------------------------------------------->
+<!------------------------------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------------------------------------------>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -19,7 +21,7 @@ $contactos = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!--------------------------------->
-<!------------ Lista de Contactos PHP ---------->
+<!------------ Bootstrap ---------->
 <!--------------------------------->
     <link
         rel="stylesheet"
@@ -60,10 +62,10 @@ $contactos = [
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Inicio</a>
+                            <a class="nav-link" href="index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="add.html">Añadir Contacto</a>
+                            <a class="nav-link" href="add.php">Añadir Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -82,6 +84,14 @@ $contactos = [
                     <!----------------------------------------------------------------------->
                     <!------- Tarjetas de Contactos ------>
                     <!----------------------------------------------------------------------->
+                    <?php if ($contactos->rowCount() == 0): ?>
+                        <div class="col-md-4 mx-auto">
+                            <div class="card card-body text-center">
+                                <p>No tienes contactos, añade alguno</p>
+                                <a href="add.php">Añadir Contacto!</a>
+                            </div>
+                        </div>
+                    <?php endif ?>
                     <?php foreach ($contactos as $contacto) : ?>
                         <div class="col-md-4 mb-3">
                             <div class="card text-center">

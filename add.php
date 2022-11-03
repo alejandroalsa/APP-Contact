@@ -1,3 +1,27 @@
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!---- Llamamos a "db.php" para conectarnos a la Base de Datos ---->
+<!---- Definimos que para que se ejecuten el resto de instrucciones, el método de solicitud sea "POST" ---->
+<!---- Declaramos que las variables de "nombre" y "numero_telefono", indicándole que serán los ID "nombre" y "numero_telefono" enviados por "POST" ---->
+<!---- Declaramos un variable "statement (es una sentencia)" para indicarle la consulta SQL y después la ejecutamos. ---->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<?php
+
+    require "db.php";
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nombre = $_POST["nombre"];
+            $numero_telefono = $_POST["numero_telefono"];
+
+        $statement = $con->prepare("INSERT INTO contactos (nombre, numero_telefono) VALUES ('$nombre', '$numero_telefono')");
+        $statement->execute();
+
+        header("Location: index.php");
+    }
+?>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -46,10 +70,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Inicio</a>
+                            <a class="nav-link" href="index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="add.html">Añadir Contacto</a>
+                            <a class="nav-link" href="add.php">Añadir Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -72,17 +96,18 @@
                         <div class="card">
                             <p class="card-header">Añadir nuevo contacto</p>
                             <div class="card-body">
-                                <form>
+
+                                <form method="POST" action="add.php">
                                     <div class="mb-3 row">
-                                        <label for="name" class="col-md-4 col-form-label text-md-end">Nombre</label>
+                                        <label for="nombre" class="col-md-4 col-form-label text-md-end">Nombre</label>
                                         <div class="col-md-6">
-                                            <input id="name" type="text" class="form-control" name="name" required autocomplete="name" autofocus>
+                                            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="phone_number" class="col-md-4 col-form-label text-md-end">Numero de Teléfono</label>
+                                        <label for="numero_telefono" class="col-md-4 col-form-label text-md-end">Numero de Teléfono</label>
                                         <div class="col-md-6">
-                                            <input id="phone_number" type="tel" class="form-control" name="phone_number" required autocomplete="phone_number" autofocus>
+                                            <input id="numero_telefono" type="tel" class="form-control" name="numero_telefono" required autocomplete="numero_telefono" autofocus>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -91,6 +116,7 @@
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>
