@@ -1,18 +1,18 @@
-<!------------------------------------------------------------------------------------------------------------------------>
-<!---- Llamamos a "db.php" para conectarnos a la Base de Datos ---->
-<!---- Realizamos una consulta SQL para imprimir los contactos guardándolos en la variable "contactos" ---->
-<!------------------------------------------------------------------------------------------------------------------------>
-
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!---- PHP ---->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
 <?php
 
+    // Llamamos a "db.php" para conectarnos a la Base de Datos
     require "db.php";
 
+    // Realizamos una consulta SQL para imprimir los contactos guardándolos en la variable "contactos" 
     $contactos = $con->query("SELECT * FROM contactos");
 
 ?>
-<!------------------------------------------------------------------------------------------------------------------------>
-<!------------------------------------------------------------------------------------------------------------------------>
-<!------------------------------------------------------------------------------------------------------------------------>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!---- PHP ---->
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 <!DOCTYPE html>
 <html lang="es">
@@ -36,6 +36,7 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <!--------------------------------->
 <!------------ Bootstrap ---------->
 <!--------------------------------->
@@ -56,7 +57,7 @@
 <!------------------------------------------------------------------------------------------------>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand font-weight-bold" href=" index.html"><img class="mr-2" src="assets/static/img/favicon.png" />ContactsApp</a>
+                <a class="navbar-brand font-weight-bold" href=" index.php"><img class="mr-2" src="assets/static/img/favicon.png" />APP Contactos</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" ><span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -92,14 +93,15 @@
                             </div>
                         </div>
                     <?php endif ?>
+
                     <?php foreach ($contactos as $contacto) : ?>
                         <div class="col-md-4 mb-3">
                             <div class="card text-center">
                                 <div class="card-body">
                                     <h3 class="card-title text-capitalize"><?= $contacto["nombre"]?></h3>
-                                    <p class="m-2"><?= $contacto["numero_telefono"]?></p>
-                                    <a href="#" class="btn btn-secondary mb-2">Editar Contacto</a>
-                                    <a href="#" class="btn btn-danger mb-2">Eliminar Contacto</a>
+                                    <p class="m-2"><?= $contacto["numero_telefono"] ?></p>
+                                    <a href="editar.php?id=<?= $contacto["id"] ?>" class="btn btn-secondary mb-2">Editar Contacto</a>
+                                    <a href="eliminar.php?id=<?= $contacto["id"] ?>" class="btn btn-danger mb-2">Eliminar Contacto</a>
                                 </div>
                             </div>
                         </div>

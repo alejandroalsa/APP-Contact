@@ -4,11 +4,25 @@
 <?php
     // Llamamos a "db.php" para conectarnos a la Base de Datos
     require "db.php";
-    
+
+    // Definimos los id para posteriormente saber que contacto editar
+    $id = $_GET["id"];
+
+    // Ejecutamos las consultas SQL para autocompletar los campos del formulario con los datos ya definidos
+    $statement = $con->prepare("SELECT * FROM contactos WHERE id = :id LIMIT 1");
+    $statement->execute([":id" => $id]);
+
+    // Pequeña medida de seguridad para que cuando un usuario introduzca un id por su cuenta devuelta un 404 y no bloque la Base de Datos
+    if ($statement->rowCount() == 0) {
+        http_response_code(404);
+        echo("HTTP 404");
+    }
+
+    $contacto = $statement->fetch(PDO::FETCH_ASSOC);
+
     // Definimos una variable para imprimir un mensaje en caso de error
     $error = null;
-    
-    // Definimos que para que se ejecuten el resto de instrucciones, el método de solicitud sea "POST"
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Definimos que no pueden estas vacíos los campos de "nombre" y "numero_telefono"
         if (empty($_POST["nombre"]) || empty($_POST["numero_telefono"])) {
@@ -23,12 +37,15 @@
             // Definimos los valores de las variables con POST
             $nombre = $_POST["nombre"];
             $numero_telefono = $_POST["numero_telefono"];
-            
+        
             // Ejecutamos las consultas SQL, en ellas definimos que por defecto los valores a enviar sean los validados.
-            $statement = $con->prepare("INSERT INTO contactos (nombre, numero_telefono) VALUES (:nombre, :numero_telefono)");
-            $statement->bindParam(":nombre", $_POST["nombre"]);
-            $statement->bindParam(":numero_telefono", $_POST["numero_telefono"]);
-            $statement->execute();
+            $statement = $con->prepare("UPDATE contactos SET nombre = :nombre, numero_telefono = :numero_telefono WHERE id = :id");
+            $statement->execute([
+                    ":id" => $id,
+                    ":nombre" => $_POST["nombre"],
+                    ":numero_telefono" => $_POST["numero_telefono"],
+                ]
+            );
 
             // Redirigimos a index
             header("Location: index.php");
@@ -111,7 +128,7 @@
                     <!----------------------------------------------------------------------->
                     <div class="col-md-8">
                         <div class="card">
-                            <p class="card-header">Añadir nuevo contacto</p>
+                            <p class="card-header">Editar contacto</p>
                             <div class="card-body">
                                 <?php if ($error): ?>
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -119,18 +136,18 @@
                                         <strong>Error!</strong> <?= $error ?>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
-                                <?php endif ?>
-                                <form method="POST" action="add.php">
+                                <?php endif?>
+                                <form method="POST" action="editar.php?id=<?= $contacto["id"] ?>" >
                                     <div class="mb-3 row">
                                         <label for="nombre" class="col-md-4 col-form-label text-md-end">Nombre</label>
                                         <div class="col-md-6">
-                                            <input id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
+                                            <input value="<?= $contacto["nombre"]?>" id="nombre" type="text" class="form-control" name="nombre" required autocomplete="nombre" autofocus>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="numero_telefono" class="col-md-4 col-form-label text-md-end">Numero de Teléfono</label>
                                         <div class="col-md-6">
-                                            <input id="numero_telefono" type="tel" class="form-control" name="numero_telefono" required autocomplete="numero_telefono" autofocus>
+                                            <input value="<?= $contacto["numero_telefono"]?>" id="numero_telefono" type="tel" class="form-control" name="numero_telefono" required autocomplete="numero_telefono" autofocus>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
