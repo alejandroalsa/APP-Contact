@@ -1,7 +1,6 @@
 <!------------------------------------------------------------------------------->
 <!-- En este archivo establecemos la conexión con la Base de Datos -->
 <!------------------------------------------------------------------------------->
-
 <?php
 
 // Definimos la dirección de la Base de Datos
@@ -24,7 +23,6 @@ try {
 } catch (PDOException $e) {
     die("PDO Connection Error: " .$e->getMessage());
 }
-
 // ----------------------------------------------------------------------- //
 // En este archivo establecemos la conexión con la Base de Datos //
 // ----------------------------------------------------------------------- //

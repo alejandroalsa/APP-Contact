@@ -23,7 +23,7 @@
     $con->prepare("DELETE FROM contactos WHERE id = :id")->execute([":id" => $id]);
 
     // Redirigimos a index
-    header("Location: index.php");
+    header("Location: home.php");
 
 ?>
 <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->
