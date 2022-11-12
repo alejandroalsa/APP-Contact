@@ -17,6 +17,7 @@
     if ($statement->rowCount() == 0) {
         http_response_code(404);
         echo("HTTP 404");
+        return;
     }
 
     // Ejecutamos las consultas SQL para eliminar al contacto con el id definido anteriormente

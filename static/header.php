@@ -5,11 +5,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="home.php">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="add.php">Añadir Contacto</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="register.php">Registro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.php">Iniciar Sesion</a>
                 </li>
             </ul>
         </div>
