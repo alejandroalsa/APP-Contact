@@ -6,6 +6,15 @@
     // Llamamos a "db.php" para conectarnos a la Base de Datos
     require "db.php";
 
+    // Iniciamos la sesion
+    session_start();
+
+    // En el caso de que la sesion no este iniciada redirigimos a login
+    if (!isset($_SESSION["user"])) {
+        header("Location: login.php");
+        return;
+    }
+
     // Realizamos una consulta SQL para imprimir los contactos guardándolos en la variable "contactos" 
     $contactos = $con->query("SELECT * FROM contactos");
 

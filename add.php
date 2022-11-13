@@ -4,13 +4,22 @@
 <?php
     // Llamamos a "db.php" para conectarnos a la Base de Datos
     require "db.php";
+
+    // Iniciamos la sesion
+    session_start();
+
+    // En el caso de que la sesion no este iniciada redirigimos a login
+    if (!isset($_SESSION["user"])) {
+        header("Location: login.php");
+        return;
+    }
     
     // Definimos una variable para imprimir un mensaje en caso de error
     $error = null;
     
     // Definimos que para que se ejecuten el resto de instrucciones, el método de solicitud sea "POST"
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Definimos que no pueden estas vacíos los campos de "nombre" y "numero_telefono"
+        // Definimos que no pueden estas vacíos los campos de "name" y "numero_telefono"
         if (empty($_POST["nombre"]) || empty($_POST["numero_telefono"])) {
             $error = "Porfavor rellena todos los campos."; 
         // Definimos que el número de teléfono no sea menor que 9   
@@ -21,7 +30,7 @@
             $error = "Numero de telefono es damasiado largo.";
         }else {
             // Definimos los valores de las variables con POST
-            $nombre = $_POST["nombre"];
+            $name = $_POST["nombre"];
             $numero_telefono = $_POST["numero_telefono"];
             
             // Ejecutamos las consultas SQL, en ellas definimos que por defecto los valores a enviar sean los validados.

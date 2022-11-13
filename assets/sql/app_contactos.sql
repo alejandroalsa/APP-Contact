@@ -21,7 +21,7 @@
   -- Creamos la tabla donde se almacenaran nuestros usuarios.
     CREATE TABLE users (
       id INT AUTO_INCREMENT PRIMARY KEY,
-      nombre VARCHAR(255),
+      name VARCHAR(255),
       email VARCHAR(255) UNIQUE,
       password VARCHAR(255)
     );
@@ -30,7 +30,7 @@
     INSERT INTO contactos (nombre, numero_telefono) VALUES ("Alejandro", "601355408");
 
   -- Insertamos un usuario para ver que todo funciona correctamente
-    INSERT INTO users (nombre, email, password ) VALUES ("Alejandro", "alejandro@gmail.com", "123456");
+    INSERT INTO users (name, email, password ) VALUES ("Alejandro", "diwes@diwes.es", "123456");
 
 -- <---------------------------------------------------------------------->
 -- <--> Creación de la Base de Datos para la APP "APP Contactos" <--> 

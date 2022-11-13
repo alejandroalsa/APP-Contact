@@ -5,6 +5,15 @@
     // Llamamos a "db.php" para conectarnos a la Base de Datos
     require "db.php";
 
+    // Iniciamos la sesion
+    session_start();
+
+    // En el caso de que la sesion no este iniciada redirigimos a login
+    if (!isset($_SESSION["user"])) {
+        header("Location: login.php");
+        return;
+    }
+
     // Definimos los id para posteriormente saber que contacto editar
     $id = $_GET["id"];
 

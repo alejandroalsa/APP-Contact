@@ -10,12 +10,12 @@ $host = "localhost";
 $database = "app_contactos";
 
 // Definimos el usuario para conectarnos y su contraseña
-$user = "root";
+$name = "root";
 $password = "";
 
 // Utilizamos un librería (PDO) para conectarnos a la Base de Datos
 try {
-    $con = new PDO("mysql:host=$host;dbname=$database", $user, $password);
+    $con = new PDO("mysql:host=$host;dbname=$database", $name, $password);
     // foreach ($con->query("SHOW DATABASES") as $row) {
     //     print_r($row);
     // }
