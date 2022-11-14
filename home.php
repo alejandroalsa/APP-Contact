@@ -16,7 +16,7 @@
     }
 
     // Realizamos una consulta SQL para imprimir los contactos guardándolos en la variable "contactos" 
-    $contactos = $con->query("SELECT * FROM contactos");
+    $contactos = $con->query("SELECT * FROM contactos WHERE id_usuario = {$_SESSION['user']['id']}");
 
 ?>
 <!----------------------------------------------------------------------------------------------------------------------------------------------------------------->

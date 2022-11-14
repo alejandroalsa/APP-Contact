@@ -34,7 +34,7 @@
             $numero_telefono = $_POST["numero_telefono"];
             
             // Ejecutamos las consultas SQL, en ellas definimos que por defecto los valores a enviar sean los validados.
-            $statement = $con->prepare("INSERT INTO contactos (nombre, numero_telefono) VALUES (:nombre, :numero_telefono)");
+            $statement = $con->prepare("INSERT INTO contactos (id_usuario, nombre, numero_telefono) VALUES ({$_SESSION['user']['id']}, :nombre, :numero_telefono)");
             $statement->bindParam(":nombre", $_POST["nombre"]);
             $statement->bindParam(":numero_telefono", $_POST["numero_telefono"]);
             $statement->execute();
