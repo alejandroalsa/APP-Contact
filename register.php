@@ -60,67 +60,43 @@
 <!------------------------------------------------------------------------------------------------>
 
 <!------------------------------------------------------------------------------------------------>
-<!------- Barra de Navegación ------>
-<!------------------------------------------------------------------------------------------------>
-<?php require "static/header.php" ?>
-<!------------------------------------------------------------------------------------------------>
-<!------- Barra de Navegación ------>
-<!------------------------------------------------------------------------------------------------>
-
-<!------------------------------------------------------------------------------------------------>
 <!------- MAIN ------>
 <!------------------------------------------------------------------------------------------------>
 <main>
-    <div class="container pt-5">
-        <div class="row justify-content-center">
-            <!----------------------------------------------------------------------->
-            <!------- Tarjeta de Añadir Contactos  ------>
-            <!----------------------------------------------------------------------->
-            <div class="col-md-8">
-                <div class="card">
-                    <p class="card-header">Registro</p>
-                    <div class="card-body">
-                        <?php if ($error): ?>
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <i class="bi bi-exclamation-triangle-fill"></i>
-                                <strong>Error!</strong> <?= $error ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php endif ?>
-                        <form method="POST" action="register.php">
-                            <div class="mb-3 row">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">Nombre</label>
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" require autocomplete="name" autofocus>
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
-                                <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control" name="email" require autocomplete="email" autofocus>
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">Contraseña</label>
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" require autocomplete="password" autofocus>
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
-                                </div>
-                            </div>
-                        </form>
-
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+		<div class="row align-items-center g-lg-5 py-5">
+			<div class="col-lg-7 text-center text-lg-start">
+			  <h1 class="display-4 fw-bold lh-1 mb-3">APP Contactos</h1>
+			  <p class="col-lg-10 fs-5">En esta pequeña aplicacion web podras guardar tus contactos de una forma simple y segura.</p>
+              <p class="col-lg-10 fs-5">Esta aplicacion web tiene como objetivo el aprendizaje de PHP</p>
+		</div>
+		<div class="col-md-10 mx-auto col-lg-5">
+			<form method="POST" action="register.php" class="p-4 p-md-5 border-secondary rounded-3 bg-secondary">
+                <?php if ($error): ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <strong>Error!</strong> <?= $error ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
+                <?php endif ?>
+				<div class="form-floating mb-3">
+                <input id="name" type="text" class="form-control" name="name" require autocomplete="name" autofocus placeholder="Nombre">
+				    <label for="email">Nombre</label>
+				</div>
+                <div class="form-floating mb-3">
+                    <input id="email" type="text" class="form-control" name="email" require autocomplete="email" autofocus placeholder="Correo Electronico">
+				    <label for="email">Correo Electronico</label>
+				</div>
+			    <div class="form-floating mb-3">
+                    <input id="password" type="password" class="form-control" name="password" require autocomplete="password" autofocus placeholder="Contraseña">
+				    <label for="password">Contraseña</label>
                 </div>
-            </div>
-            <!----------------------------------------------------------------------->
-            <!------- Tarjeta de Añadir Contactos ------>
-            <!----------------------------------------------------------------------->
-        </div>
-    </div>
+			    <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
+			    <hr class="my-4">
+			    <small class="text-muted">Ya tienes una cuenta. <a href="index.php">Inicia Sesión!</a></small>
+			</form>
+	    </div>
+	</div>		
 </main>
 <!------------------------------------------------------------------------------------------------>
 <!------- MAIN ------>

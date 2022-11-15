@@ -20,25 +20,9 @@
     <link rel="stylesheet" href="assets/static/css/style.css" />
     <link rel="icon" type="image/x-icon" href="assets/static/img/favicon.png">
 
-    <!------------------------------------------------------------------------------------->
-    <!-- Contenido PHP para carcar archivo JS exclusovamente en index -->
-    <!------------------------------------------------------------------------------------->
-
-        <!-- Declaramos la variable URI para que guarde la respuesta URI del enlace de la web -->
-        <?php $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH) ?>
-
-        <!-- Creamos una condición para que cuando el usuario esté en APP_Contact o APP_Contact/index.php cargue el archivo JS -->
-        <?php if ($uri == "/www/APP_Contact/" || $uri == "/www/APP_Contact/index.php" ): ?>
-            <script defer src="/www/APP_Contact/assets/static/js/main.js"></script>
-        <?php endif?>
-    <!------------------------------------------------------------------------------------->
-    <!-- Contenido PHP para carcar archivo JS exclusovamente en index -->
-    <!------------------------------------------------------------------------------------->
-
-    <title>APP Contact</title>
+    <title>APP Contactos</title>
 <!--------------------------------->
 <!------- Contenido Estático ------>
 <!--------------------------------->    
 </head>
 <body>
-    

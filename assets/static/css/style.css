@@ -3,8 +3,11 @@
     height: 40px;
     margin-right: 10px;
 }
-.welcome {
-    background: url('../../../assets/static/img/background.jpg');
-    background-position: center center;
-    background-size: cover;
+
+.boton{
+    margin-right: 10px;
+}
+.footer hr {
+    margin-left: 20%;
+    margin-right: 20%;
 }

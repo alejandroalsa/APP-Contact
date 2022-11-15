@@ -39,8 +39,12 @@
             $statement->bindParam(":numero_telefono", $_POST["numero_telefono"]);
             $statement->execute();
 
+            $_SESSION["flash"] = ["message" => "{$contacto['nombre']}", "estilo" => "success", "icono" => "check-circle-fill", "texto" => "ha sido añadido!"];
+
             // Redirigimos a index
             header("Location: home.php");
+
+            return;
         }
     }
 ?>

@@ -51,8 +51,8 @@
             <?php if ($contactos->rowCount() == 0): ?>
                 <div class="col-md-4 mx-auto">
                     <div class="card card-body text-center">
-                        <p>No tienes contactos, añade alguno</p>
-                        <a href="add.php">Añadir Contacto!</a>
+                        <p>No tienes contactos, añade alguno!</p>
+                        <a href="add.php"><button type="button" class="btn btn-success">Añadir Contacto</button></a>
                     </div>
                 </div>
             <?php endif ?>
@@ -63,8 +63,8 @@
                         <div class="card-body">
                             <h3 class="card-title text-capitalize"><?= $contacto["nombre"]?></h3>
                             <p class="m-2"><?= $contacto["numero_telefono"] ?></p>
-                            <a href="editar.php?id=<?= $contacto["id"] ?>" class="btn btn-secondary mb-2">Editar Contacto</a>
-                            <a href="eliminar.php?id=<?= $contacto["id"] ?>" class="btn btn-danger mb-2">Eliminar Contacto</a>
+                            <a href="editar.php?id=<?= $contacto["id"] ?>" class="btn btn-success mb-2">Editar Contacto <i class="bi bi-pencil-fill"></i></a>
+                            <a href="eliminar.php?id=<?= $contacto["id"] ?>" class="btn btn-danger mb-2">Eliminar Contacto <i class="bi bi-trash3-fill"></i></a>
                         </div>
                     </div>
                 </div>

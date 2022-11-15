@@ -29,6 +29,12 @@
 
     $contacto = $statement->fetch(PDO::FETCH_ASSOC);
 
+    if ($contacto["id_usuario"] !== $_SESSION["user"]["id"]){
+        http_response_code(403);
+        echo("HTTP 403");
+        return; 
+    }
+
     // Definimos una variable para imprimir un mensaje en caso de error
     $error = null;
 
@@ -56,8 +62,11 @@
                 ]
             );
 
+            $_SESSION["flash"] = ["message" => "{$_POST['nombre']}", "estilo" => "success", "icono" => "check-circle-fill", "texto" => "ha sido editado!"];
+
             // Redirigimos a index
             header("Location: home.php");
+            return;
         }
     }
 ?>
