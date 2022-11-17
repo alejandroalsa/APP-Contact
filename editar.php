@@ -5,10 +5,10 @@
     // Llamamos a "db.php" para conectarnos a la Base de Datos
     require "db.php";
 
-    // Iniciamos la sesion
+    // Iniciamos la Sesión
     session_start();
 
-    // En el caso de que la sesion no este iniciada redirigimos a login
+    // En el caso de que la Sesión no este iniciada redirigimos a login
     if (!isset($_SESSION["user"])) {
         header("Location: login.php");
         return;
@@ -62,8 +62,8 @@
                 ]
             );
 
-            $_SESSION["flash"] = ["message" => "{$_POST['nombre']}", "estilo" => "success", "icono" => "check-circle-fill", "texto" => "ha sido editado!"];
-
+            $_SESSION["flash"] = ["nombre" => "{$_POST['nombre']}", "estilo" => "success", "icono" => "check-circle-fill", "texto1" => "", "texto2" => "ha sido editado!", "texto3" => "", "telefono" => "{$_POST['numero_telefono']}" ];
+            
             // Redirigimos a index
             header("Location: home.php");
             return;
@@ -106,7 +106,7 @@
                         <?php if ($error): ?>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <i class="bi bi-exclamation-triangle-fill"></i>
-                                <strong>Error!</strong> <?= $error ?>
+                                <strong>¡Error!</strong> <?= $error ?>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         <?php endif?>

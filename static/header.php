@@ -6,7 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!-- Definimos que si se a establecida la sesion con un usuario muestre los enlaces de Inicio, Añadir Contacto y Cerrar Sesion -->
+        <!-- Definimos que si se a establecida la Sesión con un usuario muestre los enlaces de Inicio, Añadir Contacto y Cerrar Sesión -->
         <?php if (isset($_SESSION["user"])): ?>
             <li class="nav-item">
                 <a class="nav-link" href="home.php">Inicio</a>
@@ -16,43 +16,36 @@
             </li>
 
             <?php else: ?>  
-            <!-- En el caso de que la primera condicion no se cumpla se mostrarar los enlaces de Registro o Inicio de Sesion -->
+            <!-- En el caso de que la primera condicion no se cumpla se mostrarar los enlaces de Registro o Inicio de Sesión -->
             <li class="nav-item">
                 <a class="nav-link" href="register.php">Registro</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login.php">Iniciar Sesion</a>
+                <a class="nav-link" href="login.php">Iniciar Sesión</a>
             </li>
         <?php endif ?>
       </ul>
       <form class="d-flex" role="search">
-        <!-- En este caso insertaremos el email del usuario cuando inicie sesion -->
+        <!-- En este caso insertaremos el nombre del usuario cuando inicie Sesión -->
         <?php if (isset($_SESSION["user"])): ?>
             <button type="button" class="boton btn btn-secondary"><?= $_SESSION["user"]["name"] ?></button>
-            <a href="logaut.php"><button type="button" class="cerrar btn btn-danger">Cerrar Sesion</button></a>                      
+            <a href="logaut.php"><button type="button" class="cerrar btn btn-danger">Cerrar Sesión</button></a>                      
         <?php endif ?>
       </form>
     </div>
   </div>
 </nav>
 
-
-
-
-
-
-
+<!-- Configuracion de los mensajes flash -->
 <?php if (isset($_SESSION["flash"])): ?>
     <div class="container mt-4">
         <div class="alert alert-<?= $_SESSION["flash"]["estilo"]?>  alert-dismissible fade show" role="alert">
             <i class="bi bi-<?= $_SESSION["flash"]["icono"] ?>"></i>
-            Contacto <strong><?= $_SESSION["flash"]["message"] ?></strong> <span><?= $_SESSION["flash"]["texto"]?></span>
+            ¡Contacto <strong><?= $_SESSION["flash"]["nombre"] ?></strong> con número de teléfono <strong><?= $_SESSION["flash"]["telefono"] ?></strong> <span><?= $_SESSION["flash"]["texto1"]?></span> <span><?= $_SESSION["flash"]["texto2"]?></span> <span><?= $_SESSION["flash"]["texto3"]?></span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
 
         </div>
     </div>
-
-
     <?php unset($_SESSION["flash"]) ?>
 <?php endif ?>

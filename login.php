@@ -33,7 +33,7 @@
                     $error = "Email o Contraseña incorrectos";
                 } else {
 
-                    // Despues de acer todas las comprovaciones iniciamos la sesion y redirigimos a home
+                    // Despues de acer todas las comprovaciones iniciamos la Sesión y redirigimos a home
                     session_start();
                     unset($user["password"]);
                     $_SESSION["user"] = $user;
@@ -74,12 +74,12 @@
             <!----------------------------------------------------------------------->
             <div class="col-md-8">
                 <div class="card">
-                    <p class="card-header">Iniciar Sesion</p>
+                    <p class="card-header">Iniciar Sesión</p>
                     <div class="card-body">
                         <?php if ($error): ?>
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <i class="bi bi-exclamation-triangle-fill"></i>
-                                <strong>Error!</strong> <?= $error ?>
+                                <strong>¡Error!</strong> <?= $error ?>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         <?php endif ?>
@@ -98,7 +98,7 @@
                             </div>
                             <div class="mb-3 row">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+                                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                                 </div>
                             </div>
                         </form>

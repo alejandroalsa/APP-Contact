@@ -33,7 +33,7 @@
                     $error = "Email o Contraseña incorrectos";
                 } else {
 
-                    // Despues de acer todas las comprovaciones iniciamos la sesion y redirigimos a home
+                    // Despues de acer todas las comprovaciones iniciamos la Sesión y redirigimos a home
                     session_start();
                     unset($user["password"]);
                     $_SESSION["user"] = $user;
@@ -65,21 +65,21 @@
 		<div class="row align-items-center g-lg-5 py-5">
 			<div class="col-lg-7 text-center text-lg-start">
 			  <h1 class="display-4 fw-bold lh-1 mb-3">APP Contactos</h1>
-			  <p class="col-lg-10 fs-5">En esta pequeña aplicacion web podras guardar tus contactos de una forma simple y segura.</p>
-              <p class="col-lg-10 fs-5">Esta aplicacion web tiene como objetivo el aprendizaje de PHP</p>
+			  <p class="col-lg-10 fs-5">En esta pequeña aplicación web podrás guardar tus contactos de una forma simple y segura.</p>
+              <p class="col-lg-10 fs-5">Esta aplicación web tiene como objetivo el aprendizaje de PHP</p>
 		</div>
 		<div class="col-md-10 mx-auto col-lg-5">
 			<form method="POST" action="index.php" class="p-4 p-md-5 border-secondary rounded-3 bg-secondary">
                 <?php if ($error): ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <i class="bi bi-exclamation-triangle-fill"></i>
-                        <strong>Error!</strong> <?= $error ?>
+                        <strong>¡Error!</strong> <?= $error ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 <?php endif ?>
 				<div class="form-floating mb-3">
-                    <input id="email" type="text" class="form-control" name="email" require autocomplete="email" autofocus placeholder="Correo Electronico">
-				    <label for="email">Correo Electronico</label>
+                    <input id="email" type="text" class="form-control" name="email" require autocomplete="email" autofocus placeholder="Correo Electrónico">
+				    <label for="email">Correo Electrónico</label>
 				</div>
 			    <div class="form-floating mb-3">
                     <input id="password" type="password" class="form-control" name="password" require autocomplete="password" autofocus placeholder="Contraseña">
@@ -87,7 +87,7 @@
                 </div>
 			    <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar Sesión</button>
 			    <hr class="my-4">
-			    <small class="text-muted">No tienes una cuenta. <a href="register.php">Registrate!</a></small>
+			    <small class="text-muted">No tienes una cuenta. <a href="register.php">¡Registrate!</a></small>
 			</form>
 	    </div>
 	</div>		

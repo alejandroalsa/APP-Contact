@@ -6,10 +6,10 @@
     // Llamamos a "db.php" para conectarnos a la Base de Datos
     require "db.php";
 
-    // Iniciamos la sesion
+    // Iniciamos la Sesión
     session_start();
 
-    // En el caso de que la sesion no este iniciada redirigimos a login
+    // En el caso de que la Sesión no este iniciada redirigimos a login
     if (!isset($_SESSION["user"])) {
         header("Location: login.php");
         return;
@@ -37,10 +37,13 @@
         return; 
     }
 
+    $nombre = $_POST["nombre"];
+    $numero_telefono = $_POST["numero_telefono"];
+
     // Ejecutamos las consultas SQL para eliminar al contacto con el id definido anteriormente
     $con->prepare("DELETE FROM contactos WHERE id = :id")->execute([":id" => $id]);
 
-    $_SESSION["flash"] = ["message" => "{$contacto['nombre']}", "estilo" => "danger", "icono" => "exclamation-triangle-fill", "texto" => "ha sido eliminado!"];
+    $_SESSION["flash"] = ["nombre" => "{$_POST['nombre']}", "estilo" => "danger", "icono" => "exclamation-triangle-fill", "texto1" => "", "texto2" => "", "texto3" => "ha sido eliminado!", "telefono" => "{$_POST['numero_telefono']}" ];
 
     // Redirigimos a index
     header("Location: home.php");

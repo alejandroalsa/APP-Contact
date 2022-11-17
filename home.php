@@ -6,10 +6,10 @@
     // Llamamos a "db.php" para conectarnos a la Base de Datos
     require "db.php";
 
-    // Iniciamos la sesion
+    // Iniciamos la Sesión
     session_start();
 
-    // En el caso de que la sesion no este iniciada redirigimos a login
+    // En el caso de que la Sesión no este iniciada redirigimos a login
     if (!isset($_SESSION["user"])) {
         header("Location: login.php");
         return;
