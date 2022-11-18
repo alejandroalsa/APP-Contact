@@ -29,6 +29,7 @@
         return;
     }
 
+    // Declaramos la variable de contacto para devuelve una matriz indexada por nombre de columna como se muestra en su conjunto de resultados. 
     $contacto = $statement->fetch(PDO::FETCH_ASSOC);
 
     if ($contacto["id_usuario"] !== $_SESSION["user"]["id"]){
@@ -37,13 +38,12 @@
         return; 
     }
 
-    $nombre = $_POST["nombre"];
-    $numero_telefono = $_POST["numero_telefono"];
-
     // Ejecutamos las consultas SQL para eliminar al contacto con el id definido anteriormente
     $con->prepare("DELETE FROM contactos WHERE id = :id")->execute([":id" => $id]);
 
-    $_SESSION["flash"] = ["nombre" => "{$_POST['nombre']}", "estilo" => "danger", "icono" => "exclamation-triangle-fill", "texto1" => "", "texto2" => "", "texto3" => "ha sido eliminado!", "telefono" => "{$_POST['numero_telefono']}" ];
+
+    // Configuracion de Mensajes flash
+    $_SESSION["flash"] = ["nombre" => "{$contacto['nombre']}", "estilo" => "danger", "icono" => "exclamation-triangle-fill", "texto1" => "", "texto2" => "", "texto3" => "ha sido eliminado!", "telefono" => "{$contacto['numero_telefono']}" ];
 
     // Redirigimos a index
     header("Location: home.php");

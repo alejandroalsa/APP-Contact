@@ -39,6 +39,8 @@
             $statement->bindParam(":numero_telefono", $_POST["numero_telefono"]);
             $statement->execute();
 
+            // Configuracion de mensjes flash
+
             $_SESSION["flash"] = ["nombre" => "{$_POST['nombre']}", "estilo" => "success", "icono" => "check-circle-fill", "texto1" => "ha sido añadido!", "texto2" => "", "texto3" => "", "telefono" => "{$_POST['numero_telefono']}" ];
 
             // Redirigimos a index

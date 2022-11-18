@@ -62,6 +62,7 @@
                 ]
             );
 
+            // Configuracion de mensajes flash
             $_SESSION["flash"] = ["nombre" => "{$_POST['nombre']}", "estilo" => "success", "icono" => "check-circle-fill", "texto1" => "", "texto2" => "ha sido editado!", "texto3" => "", "telefono" => "{$_POST['numero_telefono']}" ];
             
             // Redirigimos a index
