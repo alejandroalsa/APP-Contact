@@ -39,7 +39,7 @@
                 $statement->execute();
                 $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-                // Despues de acer todas las comprovaciones iniciamos la Sesión y redirigimos a home
+                // Despues de hacer todas las comprovaciones iniciamos la Sesión y redirigimos a home
                 session_start();
                 $_SESSION["user"] = $user;
                 header("Location: home.php");
